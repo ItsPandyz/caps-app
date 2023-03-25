@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Caps Application</title>
+  </head>
+  <body>
+    <h1>Caps Application</h1>
+    <p>Current Caps: <span id="caps"></span></p>
+    <div>
+      <button id="add">Add</button>
+      <button id="subtract">Subtract</button>
+    </div>
+
+    <script>
+      // Load the saved value of caps from local storage if it exists
+      let caps = localStorage.getItem("caps");
+
+      if (caps === null) {
+        caps = 0;
+      } else {
+        caps = parseInt(caps);
+      }
+
+      // Update the UI with the current value of caps
+      document.getElementById("caps").innerText = caps;
+
+      // Add event listeners for the add and subtract buttons
+      document.getElementById("add").addEventListener("click", function() {
+        caps += 1;
+
+        // Update the UI with the new value of caps
+        document.getElementById("caps").innerText = caps;
+
+        // Save the value of caps to local storage
+        localStorage.setItem("caps", caps);
+      });
+
+      document.getElementById("subtract").addEventListener("click", function() {
+        caps -= 1;
+
+        // Update the UI with the new value of caps
+        document.getElementById("caps").innerText = caps;
+
+        // Save the value of caps to local storage
+        localStorage.setItem("caps", caps);
+      });
+    </script>
+  </body>
+</html>
